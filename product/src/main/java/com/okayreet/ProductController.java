@@ -1,0 +1,38 @@
+package com.okayreet;
+
+import com.okayreet.product.ProductResponse;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+
+@RestController
+@RequiredArgsConstructor
+@Slf4j
+@RequestMapping("api/v1/product")
+public class ProductController {
+    
+    private final ProductService productService;
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAllProducts() {
+        log.info("request all products available");
+        return new ResponseEntity<>(productService.getAllProducts(), HttpStatus.OK);
+    }
+
+//    @GetMapping("/{product_id}")
+//    public ResponseEntity<?> getProductById(@PathVariable Long product_id) {
+//        log.info("request product by ID: {}", product_id);
+//        return new ResponseEntity<>(productService.getProductById(product_id), HttpStatus.OK);
+//    }
+    @GetMapping("/{product_id}")
+    public ProductResponse getProductResponseById(@PathVariable Long product_id) {
+        log.info("request getProductResponseByProductId: {}", product_id);
+        return productService.getProductResponseById(product_id);
+    }
+}
