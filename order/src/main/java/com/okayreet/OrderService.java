@@ -55,15 +55,15 @@ public class OrderService {
 //                        .orderedAt(LocalDateTime.now())
 //                        .build();
 
-        OrderResponse orderResponse= OrderResponse.builder()
+        OrderResponse orderResponse = OrderResponse.builder()
                 .customerId(orderRequest.getCustomerId())
                 .orderId(order.getId())
                 .productName(productResponse.getName())
                 .orderedAt(order.getOrderedAt())
-                        .quantity(orderRequest.getQuantity())
-                                .totalPayment(totalPayment)
-                                        .build();
-                notificationClient.setAndSendOrderNotification(orderResponse);
+                .quantity(orderRequest.getQuantity())
+                .totalPayment(totalPayment)
+                .build();
+        notificationClient.setAndSendOrderNotification(orderResponse);
 
     }
 }

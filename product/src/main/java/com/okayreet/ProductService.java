@@ -1,21 +1,21 @@
 package com.okayreet;
 
-import java.util.List;
-
 import com.okayreet.product.ProductResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import lombok.RequiredArgsConstructor;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
 public class ProductService {
     private final ProductRepository productRepository;
 
-    public List<Product> getAllProducts(){
+    public List<Product> getAllProducts() {
         return productRepository.findAll();
     }
-    public Product getProductById(Long product_id){
+
+    public Product getProductById(Long product_id) {
         return productRepository.findById(product_id).get();
     }
 

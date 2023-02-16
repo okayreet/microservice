@@ -12,7 +12,7 @@ public class NotificationService {
     private final NotificationRepository notificationRepository;
     private final CustomerClient customerClient;
 
-    public void setAndSendOrderNotification(OrderResponse orderResponse){
+    public void setAndSendOrderNotification(OrderResponse orderResponse) {
 
 
         CustomerResponse customerResponse = customerClient.getCustomerResponseById(orderResponse.getCustomerId());
@@ -24,7 +24,6 @@ public class NotificationService {
         notificationRepository.save(Notification.builder()
                 .order_id(orderResponse.getOrderId())
                 .message("Thanks for ordering").build());
-
 
 
     }

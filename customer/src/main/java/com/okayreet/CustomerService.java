@@ -4,7 +4,6 @@ import com.okayreet.customer.CustomerResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 
 @Service
@@ -24,7 +23,7 @@ public class CustomerService {
 //                , customer.getTelephoneNumber(), customer.getEmail());
         return CustomerResponse.builder()
                 .id(customer_id)
-                .name(customer.getFirstName() + " "+ customer.getLastName())
+                .name(customer.getFirstName() + " " + customer.getLastName())
                 .dateOfBirth(customer.getDateOfBirth())
                 .telephoneNumber(customer.getTelephoneNumber())
                 .email(customer.getEmail())
