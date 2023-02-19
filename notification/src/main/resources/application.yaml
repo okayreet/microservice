@@ -4,7 +4,7 @@ spring:
   application:
     name: notification
   datasource:
-    url: jdbc:postgresql://localhost:5432/okayreet
+    url: jdbc:postgresql://localhost:5432/customer_order
     username: "okayreet"
     password: "password"
   jpa:
@@ -13,11 +13,24 @@ spring:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
     hibernate:
-      ddl-auto: update
+      ddl-auto: create-drop
     show-sql: true
   zipkin:
     base-url: http://localhost:9411
+  rabbitmq:
+    addresses: localhost:5672
 eureka:
   client:
     service-url:
       defaultZone: http://localhost:8761/eureka
+
+rabbitmq:
+  exchanges:
+    order-exchange: order-exchange
+    notification-exchange: notification-exchange
+  queues:
+    order-queue: order-queue
+    notification-queue: notification-queue
+  routing-keys:
+    order-routing-key: order-routing-key
+    notification-routing-key: notification-routing-key

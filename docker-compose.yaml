@@ -33,6 +33,13 @@ services:
     ports:
       - "9411:9411"
     restart: unless-stopped
+  rabbitmq:
+    image: rabbitmq:management-alpine
+    container_name: rabbitmq
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    restart: unless-stopped
 networks:
   postgres:
     external: true
