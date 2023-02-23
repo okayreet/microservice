@@ -44,31 +44,31 @@ services:
     networks:
       - spring
     restart: unless-stopped
-  eureka-server:
-    image: darkerror/eureka-server
-    container_name: eureka-server
-    ports:
-      - "8761:8761"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-    restart: unless-stopped
-  api-gateway:
-    image: darkerror/api-gateway
-    container_name: api-gateway
-    ports:
-      - "8084:8084"
-    environment:
-      - SPRING_PROFILES_ACTIVE=docker
-    networks:
-      - spring
-    depends_on:
-      - zipkin
-      - eureka-server
-    restart: unless-stopped
+#  eureka-server:
+#    image: darkerror/eureka-server
+#    container_name: eureka-server
+#    ports:
+#      - "8761:8761"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#    restart: unless-stopped
+#  api-gateway:
+#    image: darkerror/api-gateway
+#    container_name: api-gateway
+#    ports:
+#      - "8084:8084"
+#    environment:
+#      - SPRING_PROFILES_ACTIVE=docker
+#    networks:
+#      - spring
+#    depends_on:
+#      - zipkin
+#      - eureka-server
+#    restart: unless-stopped
   customer:
     image: darkerror/customer
     container_name: customer
@@ -81,7 +81,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+#      - eureka-server
       - postgres
     restart: unless-stopped
   notification:
@@ -96,7 +96,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+#      - eureka-server
       - postgres
       - rabbitmq
     restart: unless-stopped
@@ -112,7 +112,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+#      - eureka-server
       - postgres
       - rabbitmq
     restart: unless-stopped
@@ -128,7 +128,7 @@ services:
       - postgres
     depends_on:
       - zipkin
-      - eureka-server
+#      - eureka-server
       - postgres
     restart: unless-stopped
 networks:

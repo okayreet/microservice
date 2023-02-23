@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-        value = "PRODUCT",
-        path = "api/v1/product"
+//        value = "PRODUCT",
+        path = "api/v1/product",
+        name = "product",
+        url = "${clients.product.url}"
 )
 public interface ProductClient {
 

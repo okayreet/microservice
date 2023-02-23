@@ -5,8 +5,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @FeignClient(
-        value = "CUSTOMER",
-        path = "api/v1/customer"
+//        value = "CUSTOMER",
+        path = "api/v1/customer",
+        name = "customer",
+        url = "${clients.customer.url}"
 )
 public interface CustomerClient {
     @GetMapping("/{customer_id}")
